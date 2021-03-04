@@ -4,10 +4,10 @@ import "time"
 
 type (
 	SatelliteData struct {
-		Name      string `gorm:"primaryKey"`
-		Distance  float32
-		Message   string
-		CreatedAt time.Time `gorm:"autoCreateTime"`
+		Name      string    `gorm:"primaryKey" json:"name"`
+		Distance  float32   `json:"distance"`
+		Message   string    `json:"message"`
+		CreatedAt time.Time `gorm:"autoCreateTime" json:"created_at"`
 	}
 
 	TempSatellite struct {

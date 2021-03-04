@@ -36,6 +36,7 @@ func (ts topSecretController) TrilaterateShipPosition(writer http.ResponseWriter
 		shipData.Position["x"] = x
 		shipData.Position["y"] = y
 	}
+
 	msgs := make([][]string, 0)
 	for _, v := range satelliteData {
 		msgs = append(msgs, strings.Split(v.Message, "|"))
