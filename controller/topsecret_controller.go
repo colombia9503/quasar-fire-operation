@@ -4,7 +4,10 @@ import (
 	"encoding/json"
 	"github.com/colombia9503/quasar-fire-operation/helper"
 	"github.com/colombia9503/quasar-fire-operation/model"
+	"github.com/colombia9503/quasar-fire-operation/services/location"
+	"github.com/colombia9503/quasar-fire-operation/services/messages"
 	"net/http"
+	"strings"
 )
 
 type topSecretController struct{}
@@ -23,24 +26,28 @@ func (ts topSecretController) TrilaterateShipPosition(writer http.ResponseWriter
 
 	satelliteData := satellites.Prepare(tempSatellites)
 
-	//shipData := model.ShipDataResponse{
-	//	Position: make(map[string]float32),
-	//}
+	shipData := model.ShipDataResponse{
+		Position: make(map[string]float32),
+	}
 
-	//if x, y, err := location.GetLocation(satelliteData[0].d, distances[1], distances[2]); err != nil {
-	//	helper.JsonError(writer, err, http.StatusBadRequest)
-	//} else {
-	//	shipData.Position["x"] = x
-	//	shipData.Position["y"] = y
-	//}
-	//
-	//if solvedMsg, err := messages.GetMessage(msgs[0], msgs[1], msgs[2]); err != nil {
-	//	helper.JsonError(writer, err, http.StatusBadRequest)
-	//} else {
-	//	shipData.Message = solvedMsg
-	//}
+	if x, y, err := location.GetShipLocation(tempSatellites, satelliteData); err != nil {
+		helper.JsonError(writer, err, http.StatusBadRequest)
+	} else {
+		shipData.Position["x"] = x
+		shipData.Position["y"] = y
+	}
+	msgs := make([][]string, 0)
+	for _, v := range satelliteData {
+		msgs = append(msgs, strings.Split(v.Message, "|"))
+	}
 
-	res, err := json.Marshal(satelliteData)
+	if solvedMsg, err := messages.GetMessage(msgs[0], msgs[1], msgs[2]); err != nil {
+		helper.JsonError(writer, err, http.StatusBadRequest)
+	} else {
+		shipData.Message = solvedMsg
+	}
+
+	res, err := json.Marshal(shipData)
 	if err != nil {
 		helper.JsonError(writer, err, http.StatusInternalServerError)
 		return
