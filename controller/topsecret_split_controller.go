@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/colombia9503/quasar-fire-operation/helper"
 	"github.com/colombia9503/quasar-fire-operation/model"
 	"github.com/gorilla/mux"
@@ -31,7 +32,7 @@ func (tss topSecretSplitController) SaveSatelliteData(writer http.ResponseWriter
 	}
 
 	if result := helper.OrmConnection.Db.Save(&satelliteData); result.Error != nil {
-		helper.JsonError(writer, result.Error, 400)
+		helper.JsonError(writer, errors.New("satellite not found"), 404)
 		return
 	}
 
