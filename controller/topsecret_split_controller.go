@@ -30,7 +30,7 @@ func (tss topSecretSplitController) SaveSatelliteData(writer http.ResponseWriter
 		Distance: satellite.Distance,
 	}
 
-	if result := helper.OrmConnection.Db.Create(satelliteData); result.Error != nil {
+	if result := helper.OrmConnection.Db.Save(&satelliteData); result.Error != nil {
 		helper.JsonError(writer, result.Error, 400)
 		return
 	}
