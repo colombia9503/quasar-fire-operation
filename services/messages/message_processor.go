@@ -2,8 +2,8 @@ package messages
 
 import (
 	"errors"
-	"fmt"
 	"github.com/colombia9503/quasar-fire-operation/model"
+	"strings"
 )
 
 func GetMessage(messages ...[]string) (msg string, err error) {
@@ -34,5 +34,5 @@ func GetMessage(messages ...[]string) (msg string, err error) {
 		return arr, err
 	})
 
-	return fmt.Sprint(result), err
+	return strings.Join(result, " "), err
 }

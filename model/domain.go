@@ -3,12 +3,17 @@ package model
 import "time"
 
 type (
-	TempSatellite struct {
-		ID        uint `gorm:"primaryKey"`
-		Name      string
+	SatelliteData struct {
+		Name      string `gorm:"primaryKey"`
 		Distance  float32
 		Message   string
-		BatchNum  int       `gorm:"index"`
+		CreatedAt time.Time `gorm:"autoCreateTime"`
+	}
+
+	TempSatellite struct {
+		Name      string `gorm:"primaryKey"`
+		X         float32
+		Y         float32
 		CreatedAt time.Time `gorm:"autoCreateTime"`
 	}
 

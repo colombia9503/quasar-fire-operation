@@ -1,23 +1,23 @@
 package model
 
+import "strings"
+
 type SatellitesReqBody struct {
 	Satellites []Satellite `json:"satellites"`
 }
 
-func (srb SatellitesReqBody) Prepare() (distances [3]float32, messages [3][]string) {
-	for _, s := range srb.Satellites {
-		switch s.Name {
-		case "kenobi":
-			distances[0] = s.Distance
-			messages[0] = s.Message
-		case "skywalker":
-			distances[1] = s.Distance
-			messages[1] = s.Message
-		case "sato":
-			distances[2] = s.Distance
-			messages[2] = s.Message
+func (srb SatellitesReqBody) Prepare(satellites []TempSatellite) (satelliteData [3]SatelliteData) {
+	for k, v := range satellites {
+		for _, s := range srb.Satellites {
+			if v.Name == s.Name {
+				satelliteData[k] = SatelliteData{
+					Name:     s.Name,
+					Distance: s.Distance,
+					Message:  strings.Join(s.Message, "|"),
+				}
+			}
 		}
 	}
 
-	return distances, messages
+	return satelliteData
 }
