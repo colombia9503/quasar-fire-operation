@@ -1,16 +1,25 @@
 package model
 
-type SatellitesReqBody struct {
-	Satellites []Satellite `json:"satellites"`
-}
+import "time"
 
-type Satellite struct {
-	Name     string   `json:"name"`
-	Distance string   `json:"distance"`
-	Message  []string `json:"message"`
-}
+type (
+	TempSatellite struct {
+		ID        uint `gorm:"primaryKey"`
+		Name      string
+		Distance  float32
+		Message   string
+		BatchNum  int       `gorm:"index"`
+		CreatedAt time.Time `gorm:"autoCreateTime"`
+	}
 
-type ShipData struct {
-	Position map[string]float32 `json:"position"`
-	Message  string             `json:"message"`
-}
+	Satellite struct {
+		Name     string   `json:"name"`
+		Distance float32  `json:"distance"`
+		Message  []string `json:"message"`
+	}
+
+	ShipDataResponse struct {
+		Position map[string]float32 `json:"position"`
+		Message  string             `json:"message"`
+	}
+)

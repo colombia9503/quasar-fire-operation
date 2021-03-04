@@ -6,6 +6,8 @@ To run the project locally (needs docker installed):
 APP_DB_USERNAME=postgres
 APP_DB_PASSWORD=secret
 APP_DB_NAME=quasar_fire_operation
+APP_DB_HOST=localhost
+APP_DB_PORT=5432
 ```
 2. then you must run `docker-compose -f docker-compose-local.yml up -d` in order to get the database up and running.
 3. launch the main.go in your IDE or using the `go run main.go` on the project root folder
