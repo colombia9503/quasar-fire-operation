@@ -15,7 +15,7 @@ type (
 	errorResource struct {
 		Data appError `json:"data"`
 	}
-	appErr struct {
+	AppErr struct {
 		Error  string `json:"error"`
 		Status int    `json:"status"`
 	}
@@ -28,7 +28,7 @@ func JsonError(w http.ResponseWriter, handlerErr error, code int) {
 	log.Printf("Error: %s\n", handlerErr)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(code)
-	if res, err := json.Marshal(&appErr{handlerErr.Error(), code}); err == nil {
+	if res, err := json.Marshal(&AppErr{handlerErr.Error(), code}); err == nil {
 		w.Write(res)
 	}
 }
