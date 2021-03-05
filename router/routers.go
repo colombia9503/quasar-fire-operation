@@ -2,11 +2,13 @@ package router
 
 import "github.com/gorilla/mux"
 
-type AppRouter struct {
+var AppRouter = new(appRouter)
+
+type appRouter struct {
 	Router *mux.Router
 }
 
-func (ar *AppRouter) InitializeRouters() {
+func (ar *appRouter) InitializeRouters() {
 	ar.Router = mux.NewRouter().StrictSlash(false)
 	ar.SetTopSecretRouter()
 }

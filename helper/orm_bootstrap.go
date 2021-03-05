@@ -1,6 +1,7 @@
 package helper
 
 import (
+	"github.com/colombia9503/quasar-fire-operation/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
@@ -31,5 +32,30 @@ func (gdb *gormDb) InitOrmConnection() {
 		Conn: dbConnectionInstance.Db,
 	}), &gorm.Config{}); err != nil {
 		log.Fatal(err)
+	} else {
+		log.Println("Creating tables using entities")
+		_ = gdb.Db.Migrator().CreateTable(&model.TempSatellite{})
+		_ = gdb.Db.Migrator().CreateTable(&model.SatelliteData{})
+
+		log.Println("Inserting default satellites")
+		tempSatellites := []model.TempSatellite{
+			{
+				ID: "kenobi",
+				X:  -500,
+				Y:  -200,
+			},
+			{
+				ID: "skywalker",
+				X:  100,
+				Y:  -100,
+			},
+			{
+				ID: "sato",
+				X:  500,
+				Y:  100,
+			},
+		}
+
+		gdb.Db.Create(&tempSatellites)
 	}
 }

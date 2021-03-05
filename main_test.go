@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/colombia9503/quasar-fire-operation/helper"
-	"github.com/colombia9503/quasar-fire-operation/model"
 	"log"
 	"os"
 	"testing"
@@ -10,9 +9,6 @@ import (
 
 func TestMain(m *testing.M) {
 	helper.OrmConnection.InitOrmConnection()
-
-	_ = helper.OrmConnection.Db.Migrator().CreateTable(&model.TempSatellite{})
-	_ = helper.OrmConnection.Db.Migrator().CreateTable(&model.SatelliteData{})
 
 	code := m.Run()
 	deleteTables()
