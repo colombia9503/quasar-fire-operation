@@ -7,7 +7,7 @@ import (
 )
 
 func GetLocation(distances ...float32) (x, y float32, err error) {
-	if dist := len(distances); dist < 3 && dist > 3 {
+	if dist := len(distances); dist > 3 || dist < 3 {
 		return 0, 0, errors.New("distances array out of bounds, expected exactly 3 distances")
 	}
 
