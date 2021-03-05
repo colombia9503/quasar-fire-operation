@@ -32,6 +32,7 @@ func (ts topSecretController) TrilaterateShipPosition(writer http.ResponseWriter
 
 	if x, y, err := location.GetShipLocation(tempSatellites, satelliteData); err != nil {
 		helper.JsonError(writer, err, http.StatusBadRequest)
+		return
 	} else {
 		shipData.Position["x"] = x
 		shipData.Position["y"] = y
@@ -44,15 +45,14 @@ func (ts topSecretController) TrilaterateShipPosition(writer http.ResponseWriter
 
 	if solvedMsg, err := messages.GetMessage(msgs[0], msgs[1], msgs[2]); err != nil {
 		helper.JsonError(writer, err, http.StatusBadRequest)
+		return
 	} else {
 		shipData.Message = solvedMsg
 	}
 
-	res, err := json.Marshal(shipData)
-	if err != nil {
+	if res, err := json.Marshal(shipData); err != nil {
 		helper.JsonError(writer, err, http.StatusInternalServerError)
-		return
+	} else {
+		helper.JsonOk(writer, res, http.StatusOK)
 	}
-
-	helper.JsonOk(writer, res, http.StatusOK)
 }

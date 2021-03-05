@@ -14,28 +14,22 @@ func main() {
 
 	_ = helper.OrmConnection.Db.Migrator().CreateTable(&model.TempSatellite{})
 	_ = helper.OrmConnection.Db.Migrator().CreateTable(&model.SatelliteData{})
-	helper.OrmConnection.Db.Exec(`
-		ALTER TABLE SATELLITE_DATA 
-		ADD CONSTRAINT SATELLITE_NAME_FK 
-		FOREIGN KEY (NAME) 
-		REFERENCES TEMP_SATELLITES(NAME)
-	`)
 
 	tempSatellites := []model.TempSatellite{
 		{
-			Name: "kenobi",
-			X:    -500,
-			Y:    -200,
+			ID: "kenobi",
+			X:  -500,
+			Y:  -200,
 		},
 		{
-			Name: "skywalker",
-			X:    100,
-			Y:    -100,
+			ID: "skywalker",
+			X:  100,
+			Y:  -100,
 		},
 		{
-			Name: "sato",
-			X:    500,
-			Y:    100,
+			ID: "sato",
+			X:  500,
+			Y:  100,
 		},
 	}
 

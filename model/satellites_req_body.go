@@ -9,9 +9,9 @@ type SatellitesReqBody struct {
 func (srb SatellitesReqBody) Prepare(satellites []TempSatellite) (satelliteData [3]SatelliteData) {
 	for k, v := range satellites {
 		for _, s := range srb.Satellites {
-			if v.Name == s.Name {
+			if v.ID == s.Name {
 				satelliteData[k] = SatelliteData{
-					Name:     s.Name,
+					ID:       s.Name,
 					Distance: s.Distance,
 					Message:  strings.Join(s.Message, "|"),
 				}
