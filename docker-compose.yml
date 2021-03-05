@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  quasar-fire-operation-svc:
+    build: .
+    environment:
+      APP_DB_USERNAME: postgres
+      APP_DB_PASSWORD: secret
+      APP_DB_NAME: quasar_fire_operation
+      APP_DB_HOST: database
+      APP_DB_PORT: 5432
+    ports:
+    - "8080:8080"
+    depends_on:
+      - database
+  database:
+    image: "library/postgres:latest"
+    command: [ "postgres", "-c", "log_statement=all" ]
+    restart: on-failure
+    environment:
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=quasar_fire_operation
+    ports:
+      - "5432:5432"
