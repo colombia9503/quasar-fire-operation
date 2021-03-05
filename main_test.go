@@ -65,6 +65,25 @@ func TestTopSecretController_TrilaterateShipPositionBadReq(t *testing.T) {
 	}
 }
 
+func TestTopSecretSplitController_SaveSatelliteData(t *testing.T) {
+	req, _ := http.NewRequest(
+		"POST",
+		"/api/v1/topsecret_split/sato",
+		strings.NewReader(`{"distance":142.7,"message":["este","","un","",""]}`))
+
+	res := executeRequest(req)
+	checkResponse(t, http.StatusCreated, res.Code)
+	satelliteData := &model.SatelliteData{}
+	readBody(satelliteData, t, res.Body)
+	if satelliteData.Message != "este||un||" &&
+		satelliteData.Distance != 142.7 &&
+		satelliteData.TempSatelliteID != "sato" {
+		t.Fatal("Assertion failed: ", satelliteData)
+	} else {
+		log.Println(satelliteData)
+	}
+}
+
 func executeRequest(req *http.Request) *httptest.ResponseRecorder {
 	rr := httptest.NewRecorder()
 	router.AppRouter.Router.ServeHTTP(rr, req)

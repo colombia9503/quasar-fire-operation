@@ -19,9 +19,9 @@ type (
 	}
 
 	Satellite struct {
-		Name     string   `json:"name"`
-		Distance float32  `json:"distance"`
-		Message  []string `json:"message"`
+		Name     string   `json:"name" validate:"notnull,notblank"`
+		Distance float32  `json:"distance" validate:"notnull"`
+		Message  []string `json:"message" validate:"notnull,nonempty"`
 	}
 
 	ShipDataResponse struct {
