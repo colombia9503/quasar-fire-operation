@@ -28,9 +28,9 @@ func (tss topSecretSplitController) SaveSatelliteData(writer http.ResponseWriter
 	satellite.Name = satelliteName
 
 	satelliteData := model.SatelliteData{
-		ID:       satellite.Name,
-		Message:  strings.Join(satellite.Message, "|"),
-		Distance: satellite.Distance,
+		TempSatelliteID: satellite.Name,
+		Message:         strings.Join(satellite.Message, "|"),
+		Distance:        satellite.Distance,
 	}
 
 	if result := helper.OrmConnection.Db.Save(&satelliteData); result.Error != nil {

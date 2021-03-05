@@ -12,9 +12,11 @@ import (
 func main() {
 	helper.OrmConnection.InitOrmConnection()
 
+	log.Println("Creating tables using entities")
 	_ = helper.OrmConnection.Db.Migrator().CreateTable(&model.TempSatellite{})
 	_ = helper.OrmConnection.Db.Migrator().CreateTable(&model.SatelliteData{})
 
+	log.Println("Inserting default satellites")
 	tempSatellites := []model.TempSatellite{
 		{
 			ID: "kenobi",
@@ -35,12 +37,13 @@ func main() {
 
 	helper.OrmConnection.Db.Create(&tempSatellites)
 
+	log.Println("Initializing mux routers")
 	var ar router.AppRouter
 	ar.InitializeRouters()
 
 	n := negroni.Classic()
 	n.UseHandler(ar.Router)
 
-	log.Println("listening on port :8080")
+	log.Println("Listening on port :8080")
 	_ = http.ListenAndServe(":8080", n)
 }

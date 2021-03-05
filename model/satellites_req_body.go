@@ -11,9 +11,9 @@ func (srb SatellitesReqBody) Prepare(satellites []TempSatellite) (satelliteData 
 		for _, s := range srb.Satellites {
 			if v.ID == s.Name {
 				satelliteData[k] = SatelliteData{
-					ID:       s.Name,
-					Distance: s.Distance,
-					Message:  strings.Join(s.Message, "|"),
+					TempSatelliteID: s.Name,
+					Distance:        s.Distance,
+					Message:         strings.Join(s.Message, "|"),
 				}
 			}
 		}
