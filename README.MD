@@ -31,7 +31,7 @@ execute database migrations in order to get the base data for the satellites coo
 All the aditional information of the use or every endpoint can be reached on the postman collection `quasar fire operation.postman_collection.json`
 , it has all the information about all the endpoints that expose the service.
 
-Live example can be used from this server: [http://45.158.199.116/api/v1/topsecret][http://45.158.199.116/api/v1/topsecret]
+Live example can be used from this server: [http://45.158.199.116:4000][http://45.158.199.116:4000]
 
 ![image info](architecture.png)
 
