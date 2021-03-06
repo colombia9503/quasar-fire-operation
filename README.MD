@@ -34,6 +34,3 @@ All the aditional information of the use or every endpoint can be reached on the
 Live example can be used from this server: [http://45.158.199.116:4000][http://45.158.199.116:4000]
 
 ![image info](architecture.png)
-
-
-[http://45.158.199.116/api/v1/topsecret]: http://45.158.199.116/api/v1/topsecret
