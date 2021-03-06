@@ -10,7 +10,8 @@ APP_DB_HOST=localhost
 APP_DB_PORT=5432
 ```
 2. then you must run `docker-compose -f docker-compose-local.yml up -d` in order to get the database up and running.
-3. launch the main.go in your IDE or using the `go run main.go` on the project root folder
+3. launch the main.go in your IDE or using the `go run main.go` on the project root folder 
+   (remember to move the project to the `$GOPATH` to `src/github.com/colombia9503/quasar-fire-operation`)
 4. If you want you can use the next command to run the project locally only with docker, 
    execute this on the project root folder `docker-compose up -d`, this approach will expose 
    the application in the port `4000` on the localhost
