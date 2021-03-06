@@ -17,7 +17,7 @@ APP_DB_PORT=5432
    the application in the port `4000` on the localhost
 
 To run the project without the IDE or executing any additional command or configuration:
-- just run `docker-compose up -d` on the project root folder
+- just run `docker-compose up --scale quasar-fire-operation-svc=3` on the project root folder
 
 In order to run the tests in any environment you should run `docker-compose -f docker-compose.yml -f docker-compose.test.yml up`
 
