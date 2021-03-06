@@ -31,7 +31,8 @@
 						"v1",
 						"topsecret"
 					]
-				}
+				},
+				"description": "this endpoint will return a shild position and message calculaltion, the array must contain all the three satellites information in order to return the ship data, if any of this information its corrupt or incomplete the service will return a 400 http status with a message that show the actual error"
 			},
 			"response": [
 				{
@@ -116,7 +117,7 @@
 						"skywalker"
 					]
 				},
-				"description": "This endpoint is used to register the satellite obtained data, receives a path param that contains the satellite name"
+				"description": "This endpoint is used to register the satellite obtained data, receives a path param that contains the satellite name, it will store or update a satellite information once, the data will persist until the request GET /api/v1/topsecret_split is maked, if not it gonna keeps updating the given satellite on the path params, if you pass a non-existent satellite name it will returns a 404 http status, if the data its incomplete it will return a 400 http status."
 			},
 			"response": [
 				{
@@ -192,7 +193,7 @@
 						"topsecret_split"
 					]
 				},
-				"description": "This endpoint is used to get the ship complete position and message, it can returns a 404 https status if the satellite data isn't complete, or if it isnt valid or if it cannot determine the satellite position"
+				"description": "This endpoint is used to get the ship complete position and message, it can returns a 404 https status if the satellite data isn't complete, or if it isnt valid or if it cannot determine the satellite position, once the get its executed, if the service returns a 200 http status response, the satellite data will be reset. watch the POST /api/v1/topsecret_split/{satellite_name} desciption in order to get more info about the behavior of this endpoint that puts the satellite info on the database."
 			},
 			"response": [
 				{
