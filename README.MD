@@ -15,4 +15,4 @@ APP_DB_PORT=5432
 To run the project without the IDE or executing any additional command or configuration:
 - just run `docker-compose up -d` on the project root folder
 
-In order to run the tests you should run `docker-compose -rm test up -d`
+In order to run the tests in any environment you should run `docker-compose -f docker-compose.yml -f docker-compose.test.yml up`

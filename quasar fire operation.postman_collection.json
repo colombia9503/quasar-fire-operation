@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "6d423e48-1a84-466a-9f6a-f033e1a4ae0e",
+		"name": "quasar fire operation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/v1/topsecret",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"satellites\": [\r\n        {\r\n            \"name\": \"kenobi\",\r\n            \"distance\": 100.0,\r\n            \"message\": [\r\n                \"este\",\r\n                \"\",\r\n                \"\",\r\n                \"mensaje\",\r\n                \"\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"skywalker\",\r\n            \"distance\": 115.5,\r\n            \"message\": [\r\n                \"\",\r\n                \"es\",\r\n                \"\",\r\n                \"\",\r\n                \"secreto\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"sato\",\r\n            \"distance\": 142.7,\r\n            \"message\": [\r\n                \"este\",\r\n                \"\",\r\n                \"un\",\r\n                \"\",\r\n                \"\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/v1/topsecret",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"v1",
+						"topsecret"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Base example req",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"satellites\": [\r\n        {\r\n            \"name\": \"kenobi\",\r\n            \"distance\": 100.0,\r\n            \"message\": [\r\n                \"este\",\r\n                \"\",\r\n                \"\",\r\n                \"mensaje\",\r\n                \"\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"skywalker\",\r\n            \"distance\": 115.5,\r\n            \"message\": [\r\n                \"\",\r\n                \"es\",\r\n                \"\",\r\n                \"\",\r\n                \"secreto\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"sato\",\r\n            \"distance\": 142.7,\r\n            \"message\": [\r\n                \"este\",\r\n                \"\",\r\n                \"un\",\r\n                \"\",\r\n                \"\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/topsecret",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"topsecret"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 05 Mar 2021 04:18:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"position\": {\n        \"x\": 301.39246,\n        \"y\": 12140445\n    },\n    \"message\": \"este es un mensaje secreto\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/topsecret_split/{satellite_name}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"distance\": 142.7,\r\n    \"message\": [\r\n        \"este\",\r\n        \"\",\r\n        \"un\",\r\n        \"\",\r\n        \"\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/v1/topsecret_split/skywalker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"v1",
+						"topsecret_split",
+						"skywalker"
+					]
+				},
+				"description": "This endpoint is used to register the satellite obtained data, receives a path param that contains the satellite name"
+			},
+			"response": [
+				{
+					"name": "Base example req",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"distance\": 142.7,\r\n    \"message\": [\r\n        \"este\",\r\n        \"\",\r\n        \"un\",\r\n        \"\",\r\n        \"\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/topsecret_split/sato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"topsecret_split",
+								"sato"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 05 Mar 2021 04:19:57 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "104"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"sato\",\n    \"distance\": 142.7,\n    \"message\": \"este||un||\",\n    \"created_at\": \"2021-03-04T23:19:57.8218833-05:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/topsecret_split",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/v1/topsecret_split",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"v1",
+						"topsecret_split"
+					]
+				},
+				"description": "This endpoint is used to get the ship complete position and message, it can returns a 404 https status if the satellite data isn't complete, or if it isnt valid or if it cannot determine the satellite position"
+			},
+			"response": [
+				{
+					"name": "Base example req",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/topsecret_split",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"topsecret_split"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 05 Mar 2021 04:20:02 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"position\": {\n        \"x\": 301.39246,\n        \"y\": 12140445\n    },\n    \"message\": \"este es un mensaje secreto\"\n}"
+				}
+			]
+		}
+	]
+}
