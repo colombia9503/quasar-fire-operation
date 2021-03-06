@@ -28,7 +28,7 @@ on the port `8080` if you use the docker command on the 4th point it will expose
 it uses a simple architecture based on microservices, can have multiple instances that are connected to a nginx load balancer
 its pretty simple but effective, all the applications are connected to a postgresql database, when the service start running it will
 execute database migrations in order to get the base data for the satellites coordinates for the ship position calculation.
-All the aditional information of the use or every endpoint can be reached on the postman collection `quasar fire operation.postman_collection.json`
+All the additional information of the use or every endpoint can be reached on the postman collection `quasar fire operation.postman_collection.json`
 , it has all the information about all the endpoints that expose the service.
 
 Live example can be used from this server: [http://45.158.199.116:4000][http://45.158.199.116:4000]
