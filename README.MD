@@ -31,6 +31,9 @@ execute database migrations in order to get the base data for the satellites coo
 All the additional information of the use or every endpoint can be reached on the postman collection `quasar fire operation.postman_collection.json`
 , it has all the information about all the endpoints that expose the service.
 
+more about the solution, the ship position was determined using [https://en.wikipedia.org/wiki/True-range_multilateration][trilateration], and the message was determined using a custom reducer, 
+reducing all the satellite traces into one unique trace, making some validations in case of
+
 Live example can be used from this server: [http://45.158.199.116:4000][http://45.158.199.116:4000]
 
 ![image info](architecture.png)
