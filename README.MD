@@ -32,7 +32,7 @@ All the additional information of the use or every endpoint can be reached on th
 , it has all the information about all the endpoints that expose the service.
 
 more about the solution, the ship position was determined using [https://en.wikipedia.org/wiki/True-range_multilateration][trilateration], 
-there's not go-module with a 2d trilation implementation, so i have to implement the algorithm based on that wikipedia article shown above, 
+there's not go-module with a 2d trilateration implementation, so i have to implement the algorithm based on that wikipedia article shown above, 
 and the message was determined using a custom reducer, reducing all the satellite traces into one unique trace, making some validations 
 in case of the other traces in the message got a problem.
 
