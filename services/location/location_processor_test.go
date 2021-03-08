@@ -22,6 +22,6 @@ func TestGetLocationOK(t *testing.T) {
 	if x, y, err := GetLocation(100, 115.5, 142.7); err != nil {
 		t.Error("Unexpected error")
 	} else if int(x) != 301 && int(y) != 12140444 {
-		t.Fatalf("Received %d %d instead of %d %d", int(x), int(y), 301, 1)
+		t.Fatalf("Received %d %d instead of %d %d", int(x), int(y), 301, 12140444)
 	}
 }
