@@ -8,6 +8,7 @@ import (
 	"github.com/colombia9503/quasar-fire-operation/services/location"
 	"github.com/colombia9503/quasar-fire-operation/services/messages"
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
 	"strings"
 )
@@ -63,13 +64,14 @@ func (tss topSecretSplitController) TrilaterateShipPositionAndMessage(writer htt
 	}
 
 	shipData := model.ShipDataResponse{
-		Position: make(map[string]float32),
+		Position: make(map[string]float64),
 	}
 
 	if x, y, err := location.GetShipLocation(tempSatellites, satellitesData); err != nil {
 		helper.JsonError(writer, err, http.StatusBadRequest)
 		return
 	} else {
+		log.Println("ship location: ", x, y)
 		shipData.Position["x"] = x
 		shipData.Position["y"] = y
 	}

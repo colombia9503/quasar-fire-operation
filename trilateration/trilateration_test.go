@@ -14,7 +14,7 @@ func TestTrilateration(t *testing.T) {
 
 	x, y := space.Solve()
 	log.Println(x, y)
-	if int(x) != 301 && int(y) != 1 {
+	if int(x) != 301 && int(y) != 12140444 {
 		t.Error("Test failed, arguments dont match")
 	}
 }
